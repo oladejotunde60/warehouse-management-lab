@@ -2,6 +2,8 @@
 
 A working, free-to-host demo of the warehouse portal described in [docs/adr/0001-warehouse-management-portal-architecture.md](docs/adr/0001-warehouse-management-portal-architecture.md). Branded for **Tootechy IT Professional Services**.
 
+📘 **For end users:** see [docs/USER_GUIDE.md](docs/USER_GUIDE.md) — a plain-English, step-by-step walkthrough for both customers and operators. No technical knowledge required.
+
 **What it shows:** custodial intake, partial withdrawals, OTP-acknowledged release,
 realtime balance updates, signed PDF receipts, multi-tenant Postgres with row-level security,
 and an append-only movement ledger.

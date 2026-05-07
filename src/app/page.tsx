@@ -63,6 +63,26 @@ export default function LandingPage() {
           </CardBody></Card>
         ))}
       </section>
+
+      <section className="rounded-xl border border-brand-100 bg-brand-50/60 p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <h3 className="font-semibold text-slate-900">First time using the portal?</h3>
+          <p className="mt-1 text-sm text-slate-600">
+            Plain-English step-by-step guide for warehouse staff and customers — no technical knowledge required.
+          </p>
+        </div>
+        <a
+          href="https://github.com/oladejotunde60/warehouse-management-lab/blob/main/docs/USER_GUIDE.md"
+          target="_blank" rel="noreferrer"
+          className="inline-flex h-10 items-center rounded-lg bg-white ring-1 ring-brand-200 px-4 text-sm font-medium text-brand-700 hover:bg-brand-50 whitespace-nowrap"
+        >
+          Open user guide →
+        </a>
+      </section>
+
+      <footer className="text-center text-xs text-slate-500 pt-8 pb-4">
+        © {new Date().getFullYear()} Tootechy IT Professional Services. Demo build. Architecture: see the ADR in the repository.
+      </footer>
     </div>
   );
 }
