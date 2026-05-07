@@ -1,11 +1,19 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { Card, CardBody, CardHeader, CardTitle, CardDescription } from "@/components/ui/Card";
-import { Input, Label, Select } from "@/components/ui/Input";
-import { Button } from "@/components/ui/Button";
-import { createIntake } from "@/app/actions/intake";
+import { IntakeForm } from "@/components/IntakeForm";
 
-export default async function IntakePage({ searchParams }: { searchParams: { error?: string } }) {
+export default async function IntakePage({
+  searchParams,
+}: {
+  searchParams: {
+    error?: string;
+    customer_id?: string;
+    sku_id?: string;
+    onboarded?: string;
+    sku_added?: string;
+  };
+}) {
   const supabase = createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect("/login");
@@ -22,8 +30,8 @@ export default async function IntakePage({ searchParams }: { searchParams: { err
     <div className="max-w-2xl mx-auto">
       <h1 className="text-2xl font-bold text-slate-900">New intake</h1>
       <p className="text-sm text-slate-500 mb-6">
-        Receive goods at the dock. This writes a <code className="font-mono text-xs bg-slate-100 px-1 rounded">GoodsReceived</code> event
-        and creates a new lot in one transaction.
+        Receive goods at the dock. Onboard a new customer or add a new SKU on the spot if needed —
+        no need to leave this page.
       </p>
 
       {searchParams.error && (
@@ -35,56 +43,19 @@ export default async function IntakePage({ searchParams }: { searchParams: { err
       <Card>
         <CardHeader>
           <CardTitle>Goods receipt</CardTitle>
-          <CardDescription>Operator-only. Fill in customer, SKU, lot code, and quantity.</CardDescription>
+          <CardDescription>
+            Pick the customer and SKU, or use "+ New" to add either inline.
+          </CardDescription>
         </CardHeader>
         <CardBody>
-          <form action={createIntake} className="space-y-4">
-            <div>
-              <Label htmlFor="tenant_id">Customer (depositor)</Label>
-              <Select id="tenant_id" name="tenant_id" required>
-                <option value="">Select customer…</option>
-                {(tenants ?? []).map((t) => (
-                  <option key={t.id} value={t.id}>{t.name}</option>
-                ))}
-              </Select>
-            </div>
-
-            <div>
-              <Label htmlFor="sku_id">SKU</Label>
-              <Select id="sku_id" name="sku_id" required>
-                <option value="">Select SKU…</option>
-                {(skus ?? []).map((s) => (
-                  <option key={s.id} value={s.id} data-tenant={s.tenant_id}>
-                    {s.code} — {s.name}
-                  </option>
-                ))}
-              </Select>
-              <p className="mt-1 text-xs text-slate-500">In production, this list is filtered by selected customer.</p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor="lot_code">Lot code</Label>
-                <Input id="lot_code" name="lot_code" placeholder="LOT-2026-XXX" required />
-              </div>
-              <div>
-                <Label htmlFor="quantity">Quantity</Label>
-                <Input id="quantity" name="quantity" type="number" step="0.001" min="0.001" required />
-              </div>
-            </div>
-
-            <div>
-              <Label htmlFor="expiry_date">Expiry (optional)</Label>
-              <Input id="expiry_date" name="expiry_date" type="date" />
-            </div>
-
-            <div>
-              <Label htmlFor="notes">Notes / location (optional)</Label>
-              <Input id="notes" name="notes" placeholder="Zone A, rack 12" />
-            </div>
-
-            <Button type="submit" size="lg" className="w-full">Receive goods</Button>
-          </form>
+          <IntakeForm
+            tenants={tenants ?? []}
+            skus={(skus ?? []) as any}
+            initialTenantId={searchParams.customer_id}
+            initialSkuId={searchParams.sku_id}
+            onboarded={Boolean(searchParams.onboarded)}
+            skuAdded={Boolean(searchParams.sku_added)}
+          />
         </CardBody>
       </Card>
     </div>

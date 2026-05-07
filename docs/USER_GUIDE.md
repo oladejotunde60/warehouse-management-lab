@@ -121,16 +121,20 @@ You'll land on the **operator dashboard** — a different view from customers, s
 When a customer's truck arrives:
 
 1. Click **Intake** in the menu.
-2. Fill in the form:
-   - **Customer** — which customer the goods belong to.
-   - **SKU** — the type of item.
+2. Pick the customer from the **Customer (depositor)** dropdown.
+   - **Brand new customer?** Click **+ New customer** (top-right of the field). A small form appears — type the company name, click **Create customer**. They're added immediately and pre-selected for you.
+3. Pick the **SKU** (the kind of item).
+   - **The customer has no SKUs yet, or this is a new product?** Click **+ New SKU for this customer**. Fill in the code (e.g., `RICE-50KG`), description, unit of measure, and any tags. Click **Create SKU**. It's added and pre-selected.
+4. Fill in the rest:
    - **Lot code** — a unique code you assign, e.g., `LOT-RICE-2026-005`. This will identify this batch forever.
    - **Quantity** — how much was actually delivered.
    - **Expiry** *(optional)* — if the goods expire.
    - **Notes / location** *(optional)* — where in the warehouse it's stored, e.g., "Zone A, rack 12".
-3. Click **Receive goods**.
+5. Click **Receive goods**.
 
 The customer's dashboard updates immediately — the new lot appears for them with the full quantity.
+
+> **Walk-up onboarding:** the whole flow above — register a new depositor, add their first SKU, and book the intake — happens on a single screen. The operator never leaves the intake page.
 
 ## Step 3 · See pending withdrawal requests
 
