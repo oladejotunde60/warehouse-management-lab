@@ -3,8 +3,11 @@ import type { Metadata } from "next";
 import { Nav } from "@/components/Nav";
 
 export const metadata: Metadata = {
-  title: "Warehouse Management Lab",
-  description: "Custodial warehouse: intake, partial withdrawals, OTP acknowledgement, audit-grade ledger.",
+  title: {
+    default: "Tootechy WMS — Warehouse Management Solution",
+    template: "%s · Tootechy WMS",
+  },
+  description: "Tootechy IT Professional Services — custodial warehouse management: intake, partial withdrawals, OTP acknowledgement, audit-grade ledger.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

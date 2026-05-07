@@ -1,6 +1,6 @@
-# Warehouse Management Lab — Sales Demo
+# Tootechy IT Professional Services — Warehouse Management Solution
 
-A working, free-to-host demo of the warehouse portal described in [docs/adr/0001-warehouse-management-portal-architecture.md](docs/adr/0001-warehouse-management-portal-architecture.md).
+A working, free-to-host demo of the warehouse portal described in [docs/adr/0001-warehouse-management-portal-architecture.md](docs/adr/0001-warehouse-management-portal-architecture.md). Branded for **Tootechy IT Professional Services**.
 
 **What it shows:** custodial intake, partial withdrawals, OTP-acknowledged release,
 realtime balance updates, signed PDF receipts, multi-tenant Postgres with row-level security,

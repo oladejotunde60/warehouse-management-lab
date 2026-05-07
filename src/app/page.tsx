@@ -5,6 +5,9 @@ export default function LandingPage() {
   return (
     <div className="space-y-12">
       <section className="text-center pt-8 pb-4">
+        <div className="inline-flex items-center gap-2 rounded-full bg-brand-50 ring-1 ring-brand-100 px-3 py-1 text-xs font-medium text-brand-700 mb-5">
+          Tootechy IT Professional Services · Warehouse Management Solution
+        </div>
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
           Custodial warehouse, <span className="text-brand-600">audit-grade by default</span>.
         </h1>

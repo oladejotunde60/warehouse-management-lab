@@ -28,11 +28,14 @@ export async function buildReceiptPdf(r: ReceiptInput): Promise<Uint8Array> {
 
   // Header bar
   page.drawRectangle({ x: 0, y: 791, width, height: 51, color: navy });
-  page.drawText("WAREHOUSE MANAGEMENT LAB", {
-    x: 32, y: 812, size: 16, font: bold, color: rgb(1, 1, 1),
+  page.drawText("TOOTECHY IT PROFESSIONAL SERVICES", {
+    x: 32, y: 818, size: 13, font: bold, color: rgb(1, 1, 1),
+  });
+  page.drawText("Warehouse Management Solution", {
+    x: 32, y: 805, size: 9, font, color: rgb(0.85, 0.92, 1),
   });
   page.drawText(r.kind === "intake" ? "GOODS RECEIPT" : "GOODS RELEASE", {
-    x: 32, y: 796, size: 10, font, color: rgb(0.85, 0.92, 1),
+    x: width - 32 - (r.kind === "intake" ? 95 : 90), y: 812, size: 12, font: bold, color: rgb(1, 1, 1),
   });
 
   // Tenant
@@ -75,10 +78,13 @@ export async function buildReceiptPdf(r: ReceiptInput): Promise<Uint8Array> {
 
   // Footer
   page.drawText("This receipt is part of an append-only, hash-anchored audit ledger.", {
-    x: 32, y: 60, size: 9, font, color: slate,
+    x: 32, y: 72, size: 9, font, color: slate,
+  });
+  page.drawText("Issued by Tootechy IT Professional Services on behalf of warehouse operations.", {
+    x: 32, y: 58, size: 8, font, color: slate,
   });
   page.drawText(`Document ref: ${r.reference}`, {
-    x: 32, y: 44, size: 9, font: mono, color: sky,
+    x: 32, y: 42, size: 9, font: mono, color: sky,
   });
 
   return pdf.save();

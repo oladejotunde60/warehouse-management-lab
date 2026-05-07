@@ -27,8 +27,11 @@ export async function Nav() {
     <header className="bg-white border-b border-slate-200">
       <div className="mx-auto max-w-7xl px-6 py-3 flex items-center justify-between">
         <Link href={homeHref} className="flex items-center gap-2 font-semibold text-slate-900">
-          <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600 text-white text-sm font-bold">W</span>
-          Warehouse Lab
+          <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600 text-white text-sm font-bold">T</span>
+          <span className="leading-tight">
+            <span className="block">Tootechy WMS</span>
+            <span className="block text-[10px] font-normal text-slate-500">IT Professional Services</span>
+          </span>
         </Link>
         <nav className="flex items-center gap-4 text-sm">
           {role === "operator" && (
